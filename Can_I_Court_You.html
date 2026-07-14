@@ -1,10 +1,261 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Can I Court You?</title><style>
-*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;font-family:Segoe UI,sans-serif}body{background:linear-gradient(135deg,#ff9ecb,#ffd6e7,#fff);display:flex;justify-content:center;align-items:center;min-height:100vh;overflow:hidden;text-align:center}.container{max-width:700px;padding:20px}h1{font-size:clamp(2em,8vw,3.5em);color:#ff2d75;margin-bottom:25px}p{font-size:1.15em;color:#555;line-height:1.6}.button-group{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:35px}button{padding:16px 40px;border:none;border-radius:50px;font-size:1.05em;font-weight:700;cursor:pointer;transition:.3s}#yes{background:#28a745;color:#fff}#no{background:#dc3545;color:#fff}#gift{display:none;font-size:90px;cursor:pointer;animation:bounce 1.5s infinite}.scroll{display:none;background:#fffef0;padding:35px;border-radius:20px;max-height:80vh;overflow:auto}h2{color:#d6005c;margin-bottom:20px}.heart{position:fixed;animation:float 5s linear forwards;pointer-events:none}@keyframes bounce{50%{transform:translateY(-15px)}}@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-120vh);opacity:0}}
-</style></head><body><div class="container"><div id="question"><h1>Can I Court You?</h1><p id="text">There's something I've wanted to ask you for quite some time...</p><div class="button-group"><button id="yes">Yes</button><button id="no">No</button></div></div><div id="gift">🎁</div><div id="letter" class="scroll"><h2>A Letter For You</h2><p>I hoped you'd say yes, because this means you'll give me the chance to know you better.</p><p>From the moment we started talking, you slowly became someone special to me. Every conversation, every laugh, and every memory we've shared is something I truly treasure.</p><p>I know I'm not perfect, but I promise to always try my best to understand you, support you, and treat you with care and respect.</p><p><b>I promise effort.<br>I promise honesty.<br>I promise to always value you.</b></p><p>So...<br><br><b>Will you allow me to court you?</b><br>I'd love the chance to earn your trust, make you smile, and show you how much you mean to me.<br><br>❤️</p></div></div><script>
-const yes=document.getElementById("yes"),no=document.getElementById("no"),text=document.getElementById("text"),gift=document.getElementById("gift"),letter=document.getElementById("letter");let s=0,z=1;const m=["Really?","Are you sure?","You just made me smile.","One more time to be certain?"],n=["Are you sure?","Maybe give it another thought.","I'll wait for your answer.","That button seems a little suspicious.","Take your time... 💕"];
-yes.onclick=()=>{s++;if(s<3){text.innerHTML=m[s-1];z*=1.2;yes.style.transform=`scale(${z})`}else if(s==3){text.innerHTML=m[2];yes.style.transform="scale(1)";no.style.display="none"}else{question.style.display="none";gift.style.display="block"}};
-no.onclick=()=>{text.innerHTML=n[Math.floor(Math.random()*n.length)];no.style.transform=`translate(${(Math.random()-.5)*20}px,${(Math.random()-.5)*20}px)`};
-gift.onclick=()=>{gift.style.display="none";letter.style.display="block";let i=setInterval(h,300);setTimeout(()=>clearInterval(i),8000)};
-function h(){let e=document.createElement("div");e.className="heart";e.innerHTML=Math.random()>.5?"❤️":"💗";e.style.left=Math.random()*100+"vw";e.style.fontSize=15+Math.random()*35+"px";e.style.animationDuration=4+Math.random()*2+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),6000)}
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Can I Court You?</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff9ecb, #ffd6e7, #fff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    #question h1 {
+      font-size: 2.5rem;
+      color: #ff6b9d;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    #text {
+      font-size: 1.1rem;
+      color: #666;
+      margin: 20px 0;
+      min-height: 60px;
+      line-height: 1.6;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    #yes {
+      background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+    }
+
+    #yes:hover {
+      box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+    }
+
+    #no {
+      background: #f0f0f0;
+      color: #333;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #no:hover {
+      background: #e0e0e0;
+    }
+
+    #gift {
+      background: linear-gradient(135deg, #ffd700, #ffed4e);
+      color: #333;
+      font-size: 1.5rem;
+      padding: 15px 25px;
+      margin-top: 20px;
+    }
+
+    #gift:hover {
+      transform: scale(1.1);
+    }
+
+    #letter {
+      display: none;
+      background: #fff3e0;
+      border: 2px solid #ff6b9d;
+      padding: 30px;
+      margin-top: 20px;
+      border-radius: 10px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    #letter h2 {
+      color: #ff6b9d;
+      margin-bottom: 15px;
+    }
+
+    #letter p {
+      text-align: left;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .heart {
+      position: fixed;
+      animation: float 3s ease-in-out;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -50px;
+        opacity: 1;
+      }
+      100% {
+        bottom: 100vh;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px;
+      }
+
+      #question h1 {
+        font-size: 1.8rem;
+      }
+
+      .button-group {
+        gap: 10px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="question">
+      <h1>Can I Court You?</h1>
+      <p id="text">There's something I've wanted to ask you for quite some time...</p>
+      <div class="button-group">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+      </div>
+    </div>
+    <button id="gift">🎁 Open Gift</button>
+    <div id="letter">
+      <h2>For You 💕</h2>
+      <p>Every moment with you feels like a beautiful dream. You make my heart skip a beat whenever you're near. I can't imagine a future without you in it. Thank you for being my reason to smile every single day.</p>
+    </div>
+  </div>
+
+  <script>
+    const yes = document.getElementById('yes');
+    const no = document.getElementById('no');
+    const text = document.getElementById('text');
+    const gift = document.getElementById('gift');
+    const letter = document.getElementById('letter');
+    const question = document.getElementById('question');
+
+    let clickCount = 0;
+    let yesScale = 1;
+
+    const messages = [
+      'Are you sure? Take another look at that button size...',
+      'The "Yes" button is getting bigger... coincidence? 😊',
+      'I think you know what the right choice is...'
+    ];
+
+    const noResponses = [
+      'Aw, come on! 🥺',
+      'Really? Give it another shot!',
+      'You sure about that? 💔',
+      'One more chance? Pretty please?'
+    ];
+
+    yes.onclick = () => {
+      clickCount++;
+      if (clickCount < 3) {
+        text.innerHTML = messages[clickCount - 1];
+        yesScale *= 1.2;
+        yes.style.transform = `scale(${yesScale})`;
+      } else if (clickCount === 3) {
+        text.innerHTML = messages[2];
+        yes.style.transform = 'scale(1)';
+        no.style.display = 'none';
+      } else {
+        question.style.display = 'none';
+        gift.style.display = 'block';
+      }
+    };
+
+    no.onclick = () => {
+      const response = noResponses[Math.floor(Math.random() * noResponses.length)];
+      text.innerHTML = response;
+      const offsetX = (Math.random() - 0.5) * 20;
+      const offsetY = (Math.random() - 0.5) * 20;
+      no.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    };
+
+    gift.onclick = () => {
+      gift.style.display = 'none';
+      letter.style.display = 'block';
+      let heartInterval = setInterval(createHeart, 300);
+      setTimeout(() => clearInterval(heartInterval), 8000);
+    };
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = Math.random() > 0.5 ? '❤️' : '💗';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (15 + Math.random() * 35) + 'px';
+      heart.style.opacity = Math.random() * 0.5 + 0.5;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 3000);
+    }
+  </script>
+</body>
+</html>
